@@ -1,0 +1,36 @@
+---
+title: Followers
+---
+
+import HttpClipboard from "../../../components/HttpClipboard.astro";
+import CodeClipboard from "../../../components/CodeClipboard.astro";
+
+# Overview
+This feature allows users to follow specific blog authors or other users within the platform. Users can subscribe to their favorite content creators to receive notifications about new posts.
+<p>
+  <span class="font-bold text-lg italic">Note:</span> Comments indicating which fields are required and which are optional can be found below the code snippet for each JSON property in the request body.
+</p>
+
+## Follow a user
+This endpoint enables you to follow a user using the JSON object body.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/followers">
+  <HttpClipboard httpVerb="POST" path="followers" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "userId": "User id" // Required
+    }
+```
+
+
+## Unfollow user
+To unfollow user, enter a valid ID in the URL path (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/comments/{:id}">
+  <HttpClipboard httpVerb="DELETE" path="comments/{:id}" />
+</CodeClipboard>  

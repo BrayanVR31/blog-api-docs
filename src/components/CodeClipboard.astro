@@ -1,0 +1,26 @@
+---
+import { Icon } from "astro-icon/components";
+const { clipboardText = "example" } = Astro.props;
+const tooltipClasses = ["tooltip", "tooltip-open", "tooltip-accent", "tooltip-left"];
+---
+
+<div class="w-full dark:bg-gray-800 bg-slate-900 text-gray-300 p-5 flex items-center justify-between rounded-sm">
+  <slot />
+  <button data-tip="Copied" data-clipboard-text={clipboardText} data-btn="clipboard" class="btn btn-square btn-soft">
+    <Icon name="iconoir:copy"/>
+  </button>
+</div>
+
+<script>
+  import ClipboardJS from "clipboard";
+  const clipboard = new ClipboardJS("[data-btn]", {
+    text: function(trigger) {
+      return trigger.getAttribute("data-clipboard-text") || "error";
+    }
+  });
+
+  clipboard.on("success", function(e) {
+    e.trigger.classList.add("tooltip", "tooltip-open", "tooltip-primary", "tooltip-left");
+    console.log(e.action);
+  });
+</script>

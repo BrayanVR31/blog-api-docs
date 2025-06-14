@@ -1,0 +1,96 @@
+---
+title: Comments
+---
+
+import HttpClipboard from "../../../components/HttpClipboard.astro";
+import CodeClipboard from "../../../components/CodeClipboard.astro";
+
+# Overview
+Users can post comments on blog articles, reply to other user's comments, and participate in discussions.
+<p>
+  <span class="font-bold text-lg italic">Note:</span> Comments indicating which fields are required and which are optional can be found below the code snippet for each JSON property in the request body.
+</p>
+
+## Get a list of comments
+Use the following URL path to retrieve the full list of available comments.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/comments">
+  <HttpClipboard httpVerb="GET" path="comments" />
+</CodeClipboard>  
+
+##### Response
+This is the standard URL response in JSON format that the server sends so that you can verify the type of comment structure.
+```json 
+  [
+    {
+      "id": ""
+    }
+  ]
+```
+
+## Get a single comment
+Use the following URL path to retrieve a comment with an existing ID (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/comments/{:id}">
+  <HttpClipboard httpVerb="GET" path="comments/{:id}" />
+</CodeClipboard>  
+
+##### Response
+This is the standard URL response in JSON format that the server sends so that you can verify the type of comment structure.
+```json 
+  [
+    {
+      "id": ""
+    }
+  ]
+```
+
+## Create a comment
+This endpoint enables you to create a comment using the JSON object body.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/comments">
+  <HttpClipboard httpVerb="POST" path="comments" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "postId": "uuid of post", // Required
+      "userId": "uuid of user", // Required
+      "content": "comment content", // Required,
+      "status": "approved", // Required - "approved" | "pending" | "spam" | "deleted",
+      "likes": 0, // Required
+      "replies": 0 // Required
+    }
+```
+
+## Update a comment
+To update a single comment, simply pass the id into the path URL (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/comments/{:id}">
+  <HttpClipboard httpVerb="PATCH" path="comments/{:id}" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "postId": "uuid of post", // Optional
+      "userId": "uuid of user", // Optional
+      "content": "comment content", // Optional,
+      "status": "approved", // Optional - "approved" | "pending" | "spam" | "deleted",
+      "likes": 0, // Optional
+      "replies": 0 // Optional
+    }
+```
+
+## Delete a comment
+To delete a comment, enter a valid ID in the URL path (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/comments/{:id}">
+  <HttpClipboard httpVerb="DELETE" path="comments/{:id}" />
+</CodeClipboard>  

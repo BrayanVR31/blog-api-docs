@@ -1,0 +1,92 @@
+---
+title: Bookmarks
+---
+
+import HttpClipboard from "../../../components/HttpClipboard.astro";
+import CodeClipboard from "../../../components/CodeClipboard.astro";
+
+# Overview
+This feature allows users to save and manage their favorite blog posts. Users can save, view, edit and delete bookmarks.
+<p>
+  <span class="font-bold text-lg italic">Note:</span> Comments indicating which fields are required and which are optional can be found below the code snippet for each JSON property in the request body.
+</p>
+
+## Get a list of bookmarks
+Use the following URL path to retrieve the full list of available bookmarks.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/bookmarks">
+  <HttpClipboard httpVerb="GET" path="bookmarks" />
+</CodeClipboard>  
+
+##### Response
+This is the standard URL response in JSON format that the server sends so that you can verify the type of bookmark structure.
+```json 
+  [
+    {
+      "id": ""
+    }
+  ]
+```
+
+## Get a single bookmark
+Use the following URL path to retrieve a bookmark with an existing ID (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/bookmarks/{:id}">
+  <HttpClipboard httpVerb="GET" path="bookmarks/{:id}" />
+</CodeClipboard>  
+
+##### Response
+This is the standard URL response in JSON format that the server sends so that you can verify the type of bookmark structure.
+```json 
+  [
+    {
+      "id": ""
+    }
+  ]
+```
+
+## Create a bookmark
+This endpoint enables you to create a bookmark using the JSON object body.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/bookmarks">
+  <HttpClipboard httpVerb="POST" path="bookmarks" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "name": "tag name", // Required
+      "slug": "tag-slug", // Required
+      "description": "tag description", // Optional,
+      "color": "000" // Required
+    }
+```
+
+## Update a bookmark
+To update a single bookmark, simply pass the id into the path URL (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/bookmarks/{:id}">
+  <HttpClipboard httpVerb="PATCH" path="bookmarks/{:id}" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "name": "tag name", // Optional
+      "slug": "tag-slug", // Optional
+      "description": "tag description", // Optional,
+      "color": "000" // Optional
+    }
+```
+
+## Delete a bookmark
+To delete a bookmark, enter a valid ID in the URL path (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/bookmarks/{:id}">
+  <HttpClipboard httpVerb="DELETE" path="bookmarks/{:id}" />
+</CodeClipboard>  

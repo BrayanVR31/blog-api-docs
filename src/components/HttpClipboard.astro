@@ -1,0 +1,17 @@
+---
+const { httpVerb = "GET", path="" } = Astro.props;
+const badgesColor: Record<string, string> = {
+  "GET": "badge-success",
+  "POST": "badge-primary",
+  "PATCH": "badge-warning",
+  "DELETE": "badge-error"
+};
+---
+
+<code class="bg-transparent decoration-none">
+  <div class:list={[
+    "badge", badgesColor[httpVerb] as string ,"w-auto"
+  ]}>{httpVerb}</div>
+  <input data-copy="text" class="hidden" readonly value={`http://localhost:3000/${path}`}/>
+  http://localhost:3000/{path}
+</code>

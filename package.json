@@ -9,6 +9,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.9.2"
+    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/starlight": "^0.34.3",
+    "@astrojs/starlight-tailwind": "^4.0.1",
+    "@tailwindcss/vite": "^4.1.10",
+    "astro": "^5.9.2",
+    "clipboard": "^2.0.11",
+    "daisyui": "^5.0.43",
+    "tailwindcss": "^4.1.10"
+  },
+  "devDependencies": {
+    "@iconify-json/iconoir": "^1.2.7",
+    "@iconify-json/mdi": "^1.2.3",
+    "astro-icon": "^1.1.5"
   }
 }

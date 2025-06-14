@@ -1,0 +1,92 @@
+---
+title: reactions
+---
+
+import HttpClipboard from "../../../components/HttpClipboard.astro";
+import CodeClipboard from "../../../components/CodeClipboard.astro";
+
+# Overview
+This feature manages users accounts and authentication withing the blog system. Users can register bew accounts, log in securely, and maintain their profiles with personal information, bio and profile pictures.
+<p>
+  <span class="font-bold text-lg italic">Note:</span> Comments indicating which fields are required and which are optional can be found below the code snippet for each JSON property in the request body.
+</p>
+
+## Get a list of reactions
+Use the following URL path to retrieve the full list of available reactions.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/reactions">
+  <HttpClipboard httpVerb="GET" path="reactions" />
+</CodeClipboard>  
+
+##### Response
+This is the standard URL response in JSON format that the server sends so that you can verify the type of reaction structure.
+```json 
+  [
+    {
+      "id": ""
+    }
+  ]
+```
+
+## Get a single reaction
+Use the following URL path to retrieve a reaction with an existing ID (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/reactions/{:id}">
+  <HttpClipboard httpVerb="GET" path="reactions/{:id}" />
+</CodeClipboard>  
+
+##### Response
+This is the standard URL response in JSON format that the server sends so that you can verify the type of reaction structure.
+```json 
+  [
+    {
+      "id": ""
+    }
+  ]
+```
+
+## Create a reaction
+This endpoint enables you to create a reaction using the JSON object body.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/reactions">
+  <HttpClipboard httpVerb="POST" path="reactions" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "name": "reaction name", // Required
+      "slug": "reaction-slug", // Required
+      "description": "reaction description", // Optional,
+      "color": "000" // Required
+    }
+```
+
+## Update a reaction
+To update a single reaction, simply pass the id into the path URL (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/reactions/{:id}">
+  <HttpClipboard httpVerb="PATCH" path="reactions/{:id}" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "name": "reaction name", // Optional
+      "slug": "reaction-slug", // Optional
+      "description": "reaction description", // Optional,
+      "color": "000" // Optional
+    }
+```
+
+## Delete a reaction
+To delete a reaction, enter a valid ID in the URL path (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/reactions/{:id}">
+  <HttpClipboard httpVerb="DELETE" path="reactions/{:id}" />
+</CodeClipboard>  

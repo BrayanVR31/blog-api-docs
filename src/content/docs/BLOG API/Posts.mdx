@@ -1,0 +1,96 @@
+---
+title: Posts
+---
+
+import HttpClipboard from "../../../components/HttpClipboard.astro";
+import CodeClipboard from "../../../components/CodeClipboard.astro";
+
+# Overview
+This feature provides the core functionality for creating, managing, and displaying blog content. Users can create new blog posts with rich text formatting, and images. Authors can edit, update, publish or delete their posts.
+<p>
+  <span class="font-bold text-lg italic">Note:</span> Comments indicating which fields are required and which are optional can be found below the code snippet for each JSON property in the request body.
+</p>
+
+## Get a list of posts
+Use the following URL path to retrieve the full list of available posts.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/posts">
+  <HttpClipboard httpVerb="GET" path="posts" />
+</CodeClipboard>  
+
+##### Response
+This is the standard URL response in JSON format that the server sends so that you can verify the type of post structure.
+```json 
+  [
+    {
+      "id": ""
+    }
+  ]
+```
+
+## Get a single post
+Use the following URL path to retrieve a post with an existing ID (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/posts/{:id}">
+  <HttpClipboard httpVerb="GET" path="posts/{:id}" />
+</CodeClipboard>  
+
+##### Response
+This is the standard URL response in JSON format that the server sends so that you can verify the type of post structure.
+```json 
+  [
+    {
+      "id": ""
+    }
+  ]
+```
+
+## Create a post
+This endpoint enables you to create a post using the JSON object body.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/posts">
+  <HttpClipboard httpVerb="POST" path="posts" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "authorId": "uuid of post", // Required
+      "title": "uuid of user", // Required
+      "content": "post content", // Required,
+      "status": "approved", // Required - "approved" | "pending" | "spam" | "deleted",
+      "likes": 0, // Required
+      "replies": 0 // Required
+    }
+```
+
+## Update a post
+To update a single post, simply pass the id into the path URL (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/posts/{:id}">
+  <HttpClipboard httpVerb="PATCH" path="posts/{:id}" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "postId": "uuid of post", // Optional
+      "userId": "uuid of user", // Optional
+      "content": "post content", // Optional,
+      "status": "approved", // Optional - "approved" | "pending" | "spam" | "deleted",
+      "likes": 0, // Optional
+      "replies": 0 // Optional
+    }
+```
+
+## Delete a post
+To delete a post, enter a valid ID in the URL path (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/posts/{:id}">
+  <HttpClipboard httpVerb="DELETE" path="posts/{:id}" />
+</CodeClipboard>  

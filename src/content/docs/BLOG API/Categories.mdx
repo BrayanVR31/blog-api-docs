@@ -1,0 +1,92 @@
+---
+title: Categories
+---
+
+import HttpClipboard from "../../../components/HttpClipboard.astro";
+import CodeClipboard from "../../../components/CodeClipboard.astro";
+
+# Overview
+This feature enables users to organize and classify blog posts into different categories. Users can create custom categories, assign post to one or multiple categories.
+<p>
+  <span class="font-bold text-lg italic">Note:</span> Comments indicating which fields are required and which are optional can be found below the code snippet for each JSON property in the request body.
+</p>
+
+## Get a list of categories
+Use the following URL path to retrieve the full list of available categories.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/categories">
+  <HttpClipboard httpVerb="GET" path="categories" />
+</CodeClipboard>  
+
+##### Response
+This is the standard URL response in JSON format that the server sends so that you can verify the type of bookmark structure.
+```json 
+  [
+    {
+      "id": ""
+    }
+  ]
+```
+
+## Get a single category
+Use the following URL path to retrieve a category with an existing ID (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/categories/{:id}">
+  <HttpClipboard httpVerb="GET" path="categories/{:id}" />
+</CodeClipboard>  
+
+##### Response
+This is the standard URL response in JSON format that the server sends so that you can verify the type of category structure.
+```json 
+  [
+    {
+      "id": ""
+    }
+  ]
+```
+
+## Create a category
+This endpoint enables you to create a category using the JSON object body.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/categories">
+  <HttpClipboard httpVerb="POST" path="categories" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "name": "category name", // Required
+      "slug": "category-slug", // Required
+      "description": "tag description", // Optional,
+      "color": "000" // Optional
+    }
+```
+
+## Update a category
+To update a single category, simply pass the id into the path URL (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/categories/{:id}">
+  <HttpClipboard httpVerb="PATCH" path="categories/{:id}" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "name": "category name", // Optional
+      "slug": "category-slug", // Optional
+      "description": "category description", // Optional,
+      "color": "000" // Optional
+    }
+```
+
+## Delete a categories
+To delete a category, enter a valid ID in the URL path (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/categories/{:id}">
+  <HttpClipboard httpVerb="DELETE" path="categories/{:id}" />
+</CodeClipboard>  

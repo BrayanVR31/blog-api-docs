@@ -1,0 +1,92 @@
+---
+title: Users
+---
+
+import HttpClipboard from "../../../components/HttpClipboard.astro";
+import CodeClipboard from "../../../components/CodeClipboard.astro";
+
+# Overview
+This feature manages users accounts and authentication withing the blog system. Users can register bew accounts, log in securely, and maintain their profiles with personal information, bio and profile pictures.
+<p>
+  <span class="font-bold text-lg italic">Note:</span> Comments indicating which fields are required and which are optional can be found below the code snippet for each JSON property in the request body.
+</p>
+
+## Get a list of users
+Use the following URL path to retrieve the full list of available users.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/users">
+  <HttpClipboard httpVerb="GET" path="users" />
+</CodeClipboard>  
+
+##### Response
+This is the standard URL response in JSON format that the server sends so that you can verify the type of user structure.
+```json 
+  [
+    {
+      "id": ""
+    }
+  ]
+```
+
+## Get a single user
+Use the following URL path to retrieve a user with an existing ID (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/users/{:id}">
+  <HttpClipboard httpVerb="GET" path="users/{:id}" />
+</CodeClipboard>  
+
+##### Response
+This is the standard URL response in JSON format that the server sends so that you can verify the type of user structure.
+```json 
+  [
+    {
+      "id": ""
+    }
+  ]
+```
+
+## Create a user
+This endpoint enables you to create a user using the JSON object body.
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/users">
+  <HttpClipboard httpVerb="POST" path="users" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "name": "tag name", // Required
+      "slug": "tag-slug", // Required
+      "description": "tag description", // Optional,
+      "color": "000" // Required
+    }
+```
+
+## Update a user
+To update a single user, simply pass the id into the path URL (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/users/{:id}">
+  <HttpClipboard httpVerb="PATCH" path="users/{:id}" />
+</CodeClipboard>  
+
+##### Request body
+```json 
+    {
+      "name": "tag name", // Optional
+      "slug": "tag-slug", // Optional
+      "description": "tag description", // Optional,
+      "color": "000" // Optional
+    }
+```
+
+## Delete a user
+To delete a user, enter a valid ID in the URL path (*replace the curly braces with the **ID** item*).
+
+##### Endpoint
+<CodeClipboard clipboardText="http://localhost:3000/users/{:id}">
+  <HttpClipboard httpVerb="DELETE" path="users/{:id}" />
+</CodeClipboard>  
